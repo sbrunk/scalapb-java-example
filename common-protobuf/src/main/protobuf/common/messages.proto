@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package common;
+
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+  import: "util.UUIDWrapper.typeMapper"
+};
+
+message Post {
+    option (scalapb.message).extends = "model.Post";
+
+    string uuid = 1 [(scalapb.field).type = "java.util.UUID"];
+    string title = 2;
+    string content = 3;
+    int64 created = 4;
+}
